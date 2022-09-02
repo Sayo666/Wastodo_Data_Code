@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Grass Lands Future Preview</title>
+        <style>
+             body{
+                background-color: aquamarine;
+            }
+            h1{
+                background: green;
+                color: white;
+                font-size: 60px;
+                font-family: fantasy;
+                font-style: italic;
+            }
+            p{
+                background: whitesmoke;
+                color: black;
+                font-size: 30px;
+                font-family: fantasy;
+            }
+            #beach{
+                width: 460px;
+                height: 300px;
+                object-fit: fill;
+                object-position: left;
+                
+            }
+            #image{
+                display: none;
+                width: 460px;
+                height: 300px;
+                object-fit: fill;
+                object-position: right;
+                position: absolute;
+                top: 450px;
+                left: 950px;
+            }
+            .button {
+                background-color: #4CAF50; 
+                border: none;
+                color: white;
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                position: absolute;
+                z-index: 4;
+                margin:  150px;
+
+                
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Grass Lands</h1>
+        <p>Grass Lands are a beautiful site to see.</p>
+        <br>
+        <br>
+        <br>
+        <p>But if we keep dumping waste in the grasslands they will soon stop being beautiful. Click the See Future button to see what will happen if we keep littering</p>
+        <div>
+            <img id = "beach"src="landscape-tree-grass-horizon-marsh-cloud-1155404-pxhere.com.jpg">
+            <!-- <button class = "button">See the future</button> -->
+            <button class = "button" type="button"
+                onclick="show()" id="btnID">
+                See Future
+            </button>
+            <img id="image" src=
+                "field-farm-flower-agriculture-composing-garbage-601428-pxhere.com.jpg"
+            alt="GFG image" />
+            <script>
+                function show() {
+         
+                    /* Access image by id and change
+                    the display property to block*/
+                    document.getElementById('image')
+                            .style.display = "block";
+                }
+            </script>
+        </div>
+    </body>
+</html>
