@@ -1,0 +1,123 @@
+,Material,Extent,Measure,Site,2017-2018,2018-2019
+0,Cigarettes,Australia,Count,All,16.0,16.0
+1,Cigarettes,Australia,Count,Beaches,14.0,11.0
+2,Cigarettes,Australia,Count,Car parks,24.0,23.0
+3,Cigarettes,Australia,Count,Highways,9.0,10.0
+4,Cigarettes,Australia,Count,Industrial sites,21.0,21.0
+5,Cigarettes,Australia,Count,Recreational parks,5.0,5.0
+6,Cigarettes,Australia,Count,Residential sites,9.0,9.0
+7,Cigarettes,Australia,Count,Retail strips,53.0,49.0
+8,Cigarettes,Australia,Count,Shopping centres,38.0,40.0
+9,Cigarettes,Australia,Volume,All,0.002,0.002
+10,Cigarettes,Queensland,Count,All,19.0,16.0
+11,Cigarettes,Queensland,Count,Beaches,14.0,11.0
+12,Cigarettes,Queensland,Count,Car parks,29.0,25.0
+13,Cigarettes,Queensland,Count,Highways,15.0,13.0
+14,Cigarettes,Queensland,Count,Industrial sites,15.0,11.0
+15,Cigarettes,Queensland,Count,Recreational parks,8.0,9.0
+16,Cigarettes,Queensland,Count,Residential sites,8.0,7.0
+17,Cigarettes,Queensland,Count,Retail strips,63.0,41.0
+18,Cigarettes,Queensland,Count,Shopping centres,46.0,55.0
+19,Cigarettes,Queensland,Volume,All,0.002,0.002
+20,Glass,Australia,Count,All,0.8,0.8
+21,Glass,Australia,Count,Beaches,0.6,0.9
+22,Glass,Australia,Count,Car parks,0.7,0.8
+23,Glass,Australia,Count,Highways,1.0,1.1
+24,Glass,Australia,Count,Industrial sites,1.2,1.2
+25,Glass,Australia,Count,Recreational parks,0.2,0.3
+26,Glass,Australia,Count,Residential sites,0.4,0.4
+27,Glass,Australia,Count,Retail strips,0.8,0.6
+28,Glass,Australia,Count,Shopping centres,0.2,0.4
+29,Glass,Australia,Volume,All,0.26,0.23
+30,Glass,Queensland,Count,All,0.6,0.6
+31,Glass,Queensland,Count,Beaches,1.3,1.1
+32,Glass,Queensland,Count,Car parks,0.5,0.3
+33,Glass,Queensland,Count,Highways,0.7,0.7
+34,Glass,Queensland,Count,Industrial sites,0.6,0.5
+35,Glass,Queensland,Count,Recreational parks,0.7,1.0
+36,Glass,Queensland,Count,Residential sites,0.5,0.3
+37,Glass,Queensland,Count,Retail strips,1.0,0.9
+38,Glass,Queensland,Count,Shopping centres,0.1,0.4
+39,Glass,Queensland,Volume,All,0.18,0.14
+40,Metal,Australia,Count,All,3.2,3.3
+41,Metal,Australia,Count,Beaches,3.1,2.7
+42,Metal,Australia,Count,Car parks,2.7,2.9
+43,Metal,Australia,Count,Highways,3.7,3.8
+44,Metal,Australia,Count,Industrial sites,5.0,5.4
+45,Metal,Australia,Count,Recreational parks,1.5,1.6
+46,Metal,Australia,Count,Residential sites,2.2,2.3
+47,Metal,Australia,Count,Retail strips,4.3,4.8
+48,Metal,Australia,Count,Shopping centres,2.7,3.1
+49,Metal,Australia,Volume,All,0.62,0.53
+50,Metal,Queensland,Count,All,5.0,5.0
+51,Metal,Queensland,Count,Beaches,6.0,6.0
+52,Metal,Queensland,Count,Car parks,5.0,4.0
+53,Metal,Queensland,Count,Highways,7.0,6.0
+54,Metal,Queensland,Count,Industrial sites,5.0,4.0
+55,Metal,Queensland,Count,Recreational parks,5.0,5.0
+56,Metal,Queensland,Count,Residential sites,3.0,2.0
+57,Metal,Queensland,Count,Retail strips,6.0,5.0
+58,Metal,Queensland,Count,Shopping centres,5.0,7.0
+59,Metal,Queensland,Volume,All,0.85,0.52
+60,Paper,Australia,Count,All,7.7,7.8
+61,Paper,Australia,Count,Beaches,6.2,5.5
+62,Paper,Australia,Count,Car parks,7.3,7.1
+63,Paper,Australia,Count,Highways,8.0,7.9
+64,Paper,Australia,Count,Industrial sites,12.7,14.0
+65,Paper,Australia,Count,Recreational parks,3.0,3.0
+66,Paper,Australia,Count,Residential sites,6.9,7.1
+67,Paper,Australia,Count,Retail strips,12.5,11.5
+68,Paper,Australia,Count,Shopping centres,10.0,10.3
+69,Paper,Australia,Volume,All,1.04,1.0
+70,Paper,Queensland,Count,All,12.0,11.0
+71,Paper,Queensland,Count,Beaches,9.0,9.0
+72,Paper,Queensland,Count,Car parks,7.0,6.0
+73,Paper,Queensland,Count,Highways,14.0,13.0
+74,Paper,Queensland,Count,Industrial sites,17.0,17.0
+75,Paper,Queensland,Count,Recreational parks,7.0,7.0
+76,Paper,Queensland,Count,Residential sites,11.0,9.0
+77,Paper,Queensland,Count,Retail strips,20.0,15.0
+78,Paper,Queensland,Count,Shopping centres,14.0,17.0
+79,Paper,Queensland,Volume,All,1.3,1.1
+80,Plastic,Australia,Count,All,9.1,9.4
+81,Plastic,Australia,Count,Beaches,11.5,11.4
+82,Plastic,Australia,Count,Car parks,7.3,7.0
+83,Plastic,Australia,Count,Highways,9.4,10.4
+84,Plastic,Australia,Count,Industrial sites,14.7,16.3
+85,Plastic,Australia,Count,Recreational parks,6.5,5.7
+86,Plastic,Australia,Count,Residential sites,7.5,7.1
+87,Plastic,Australia,Count,Retail strips,12.0,11.7
+88,Plastic,Australia,Count,Shopping centres,8.7,8.5
+89,Plastic,Australia,Volume,All,1.6,1.3
+90,Plastic,Queensland,Count,All,17.0,17.0
+91,Plastic,Queensland,Count,Beaches,18.0,20.0
+92,Plastic,Queensland,Count,Car parks,11.0,9.0
+93,Plastic,Queensland,Count,Highways,19.0,22.0
+94,Plastic,Queensland,Count,Industrial sites,20.0,20.0
+95,Plastic,Queensland,Count,Recreational parks,19.0,15.0
+96,Plastic,Queensland,Count,Residential sites,11.0,10.0
+97,Plastic,Queensland,Count,Retail strips,19.0,14.0
+98,Plastic,Queensland,Count,Shopping centres,18.0,15.0
+99,Plastic,Queensland,Volume,All,1.86,1.51
+100,Other,Australia,Count,All,1.2,1.2
+101,Other,Australia,Count,Beaches,1.5,1.6
+102,Other,Australia,Count,Car parks,1.0,0.8
+103,Other,Australia,Count,Highways,1.4,1.5
+104,Other,Australia,Count,Industrial sites,1.8,2.3
+105,Other,Australia,Count,Recreational parks,0.6,0.6
+106,Other,Australia,Count,Residential sites,0.9,0.8
+107,Other,Australia,Count,Retail strips,1.2,1.5
+108,Other,Australia,Count,Shopping centres,0.6,0.8
+109,Other,Australia,Volume,All,0.06,0.07
+110,Other,Queensland,Count,All,1.7,1.7
+111,Other,Queensland,Count,Beaches,3.2,4.3
+112,Other,Queensland,Count,Car parks,0.8,0.5
+113,Other,Queensland,Count,Highways,2.1,2.5
+114,Other,Queensland,Count,Industrial sites,1.5,1.1
+115,Other,Queensland,Count,Recreational parks,1.5,1.4
+116,Other,Queensland,Count,Residential sites,1.0,0.7
+117,Other,Queensland,Count,Retail strips,2.2,2.0
+118,Other,Queensland,Count,Shopping centres,0.9,1.4
+119,Other,Queensland,Volume,All,0.07,0.09
+120,Large items,Australia,Volume,All,0.79,0.74
+121,Large items,Queensland,Volume,All,0.38,0.75
