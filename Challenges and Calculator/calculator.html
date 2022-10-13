@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Chewy&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Chewy", "cursive";
+        color: #27323b;
+      }
+      .calculator {
+        display: flex;
+        align-items: center;
+        background-color: #00fff342;
+        box-shadow: 10px 10px 5px #ff6a0c;
+        border-radius: 50px;
+        margin-bottom: 10px;
+      }
+      .calculator h1 {
+        text-align: center;
+        flex-grow: 1;
+        font-size: 65px;
+        margin: 7px;
+        /* margin-right: 235px; */
+        color: #ff6a0c;
+      }
+
+      table {
+        border: 0;
+        border: 1px solid rgb(193, 187, 187);
+        border-collapse: collapse;
+      }
+      .calTable {
+        width: 100%;
+      }
+
+      tr,
+      td,
+      th {
+        /* text-align: center; */
+        padding: 10px 10px;
+        font-size: 25px;
+      }
+      th {
+        padding: 8px 50px;
+        font-size: 40px;
+        color: black;
+        background-color: #ff4204;
+      }
+      tr.header {
+        cursor: pointer;
+      }
+      .header .sign:after {
+        content: "+";
+        display: inline-block;
+      }
+      .header.expand .sign:after {
+        content: "-";
+      }
+      .sign {
+        float: right;
+        margin-right: -30px;
+      }
+      input {
+        height: 30px;
+        font-size: 22px;
+        /* border: none; */
+        outline: none;
+      }
+      select.classic {
+        background-image: linear-gradient(45deg, transparent 50%, blue 50%),
+          linear-gradient(135deg, blue 50%, transparent 50%),
+          linear-gradient(to right, skyblue, skyblue);
+        background-position: calc(100% - 20px) calc(1em + 2px),
+          calc(100% - 15px) calc(1em + 2px), 100% 0;
+        background-size: 5px 5px, 5px 5px, 2.5em 2.5em;
+        background-repeat: no-repeat;
+      }
+      select {
+        /* styling */
+        background-color: white;
+        /* border: thin solid blue; */
+        border-radius: 4px;
+        display: inline-block;
+        font: inherit;
+        font-size: 16px;
+        /* line-height: 1.5em; */
+        padding: 0.5em 3.5em 0.5em 1em;
+        margin: 0px 0px 0 5px !important;
+
+        /* reset */
+
+        margin: 0;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+      }
+
+      select.classic:focus {
+        background-image: linear-gradient(45deg, white 50%, transparent 50%),
+          linear-gradient(135deg, transparent 50%, white 50%),
+          linear-gradient(to right, rgb(255, 89, 0), rgb(255, 89, 0));
+        background-position: calc(100% - 15px) 1em, calc(100% - 20px) 1em,
+          100% 0;
+        background-size: 5px 5px, 5px 5px, 2.5em 2.5em;
+        background-repeat: no-repeat;
+        border-color: grey;
+        outline: 0;
+      }
+
+      .button {
+        font-family: "Chewy", "cursive" !important;
+        float: right;
+        margin: 15px;
+        align-self: center;
+        background-color: #ff4e00;
+        background-image: none;
+        background-position: 0 90%;
+        background-repeat: repeat no-repeat;
+        background-size: 4px 3px;
+        box-sizing: border-box;
+        cursor: pointer;
+        display: inline-block;
+        font-family: Neucha, sans-serif;
+        font-size: 1.5rem !important;
+        font-weight: bold;
+        line-height: 23px;
+        letter-spacing: 0.2rem;
+        outline: none;
+        padding: 0.75rem;
+        text-decoration: none;
+        transition: all 235ms ease-in-out;
+        border-bottom-left-radius: 15px 255px;
+        border-bottom-right-radius: 225px 15px;
+        border-top-left-radius: 255px 15px;
+        border-top-right-radius: 15px 225px;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+      }
+
+      .button1:hover {
+        box-shadow: rgb(0 0 0 / 30%) 2px 8px 8px -5px;
+        transform: translate3d(0, 2px, 0);
+      }
+
+      /* Chrome, Safari, Edge, Opera */
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      /* Firefox */
+      input[type="number"] {
+        -moz-appearance: textfield;
+      }
+
+      .last {
+        text-align: center;
+        color: #ff4204;
+        font-size: 35px;
+        padding-top: 20px;
+        letter-spacing: 7px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="calculator">
+      <h1>Calculator</h1>
+    </div>
+    <div class="selectAvatar" onclick="changeAvatar()">
+      <!-- <a href="/Index_Calculator.html"> -->
+      <button class="button button1">Switch Profile</button>
+      <!-- </a> -->
+    </div>
+
+    <table class="calTable">
+      <tr class="header expand">
+        <th colspan="2">Food & Kitchen Needs 🍴 <span class="sign"></span></th>
+      </tr>
+      <tr>
+        <td>PET bottles</td>
+        <td>
+          <input
+            onchange="inputVal(this.value)"
+            data-Input="1.88"
+            class="inputField"
+            value="0"
+            type="number"
+          /><span
+            ><select
+              class="classic"
+              onchange="inputVal(this.value)"
+              name=""
+              id=""
+            >
+              <option value="Week">/ Week</option>
+              <option value="Month">/ Month</option>
+            </select></span
+          >
+        </td>
+      </tr>
+      <tr>
+        <td>Plastic bags</td>
+        <td>
+          <input
+            onchange="inputVal(this.value)"
+            data-Input="0.413"
+            class="inputField"
+            value="0"
+            type="number"
+          /><span
+            ><select class="classic" onchange="selectVal(event)" name="" id="">
+              <option value="Week">/ Week</option>
+              <option value="Month">/ Month</option>
+            </select></span
+          >
+        </td>
+      </tr>
+      <tr>
+        <td>Food wrapper</td>
+        <td>
+          <input
+            onchange="inputVal(this.value)"
+            data-Input="0.786"
+            class="inputField"
+            value="0"
+            type="number"
+          /><span
+            ><select class="classic" onchange="selectVal(event)" name="" id="">
+              <option value="Week">/ Week</option>
+              <option value="Month">/ Month</option>
+            </select></span
+          >
+        </td>
+      </tr>
+      <tr>
+        <td>Yogurt containers</td>
+        <td>
+          <input
+            onchange="inputVal(this.value)"
+            data-Input="0.786"
+            class="inputField"
+            value="0"
+            type="number"
+          /><span
+            ><select class="classic" onchange="selectVal(event)" name="" id="">
+              <option value="Week">/ Week</option>
+              <option value="Month">/ Month</option>
+            </select></span
+          >
+        </td>
+      </tr>
+      <tr class="header expand">
+        <th colspan="2">Bathroom & Laundry 🛀 <span class="sign"></span></th>
+      </tr>
+      <tr>
+        <td>Cotton swabs</td>
+        <td>
+          <input
+            onchange="inputVal(this.value)"
+            data-Input="0.052"
+            class="inputField"
+            value="0"
+            type="number"
+          /><span
+            ><select class="classic" onchange="selectVal(event)" name="" id="">
+              <option value="Week">/ Week</option>
+              <option value="Month">/ Month</option>
+            </select></span
+          >
+        </td>
+      </tr>
+      <tr>
+        <td>Detergent, cleaning products bottles</td>
+        <td>
+          <input
+            onchange="inputVal(this.value)"
+            data-Input="6.266"
+            class="inputField"
+            value="0"
+            type="number"
+          /><span
+            ><select class="classic" onchange="selectVal(event)" name="" id="">
+              <option value="Week">/ Week</option>
+              <option value="Month">/ Month</option>
+            </select></span
+          >
+        </td>
+      </tr>
+      <tr>
+        <td>Shampoo / shower gel / cosmetics bottles</td>
+        <td>
+          <input
+            onchange="inputVal(this.value)"
+            data-Input="4.17"
+            class="inputField"
+            value="0"
+            type="number"
+          /><span
+            ><select class="classic" onchange="selectVal(event)" name="" id="">
+              <option value="Week">/ Week</option>
+              <option value="Month">/ Month</option>
+            </select></span
+          >
+        </td>
+      </tr>
+      <tr>
+        <td>Refill packets</td>
+        <td>
+          <input
+            onchange="inputVal(this.value)"
+            data-Input="0.89"
+            class="inputField"
+            value="0"
+            type="number"
+          /><span
+            ><select class="classic" onchange="selectVal(event)" name="" id="">
+              <option value="Week">/ Week</option>
+              <option value="Month">/ Month</option>
+            </select></span
+          >
+        </td>
+      </tr>
+      <tr>
+        <td>Toothbrushes</td>
+        <td>
+          <input
+            onchange="inputVal(this.value)"
+            data-Input="1.04"
+            class="inputField"
+            value="0"
+            type="number"
+          /><span
+            ><select class="classic" onchange="selectVal(event)" name="" id="">
+              <option value="Week">/ Week</option>
+              <option value="Month">/ Month</option>
+            </select></span
+          >
+        </td>
+      </tr>
+      <tr>
+        <td>Toothpastes</td>
+        <td>
+          <input
+            onchange="inputVal(this.value)"
+            data-Input="0.786"
+            class="inputField"
+            value="0"
+            type="number"
+          /><span
+            ><select class="classic" onchange="selectVal(event)" name="" id="">
+              <option value="Week">/ Week</option>
+              <option value="Month">/ Month</option>
+            </select></span
+          >
+        </td>
+      </tr>
+
+      <tr class="header expand">
+        <th colspan="2">
+          Disposable Containers and Packaging 🍵 <span class="sign"></span>
+        </th>
+      </tr>
+      <tr>
+        <td>Take-away plastic box</td>
+        <td>
+          <input
+            onchange="inputVal(this.value)"
+            data-Input="1.66"
+            class="inputField"
+            value="0"
+            type="number"
+          /><span
+            ><select class="classic" onchange="selectVal(event)" name="" id="">
+              <option value="Week">/ Week</option>
+              <option value="Month">/ Month</option>
+            </select></span
+          >
+        </td>
+      </tr>
+      <tr>
+        <td>Take-away plastic cup</td>
+        <td>
+          <input
+            onchange="inputVal(this.value)"
+            data-Input="1.04"
+            class="inputField"
+            value="0"
+            type="number"
+          /><span
+            ><select class="classic" onchange="selectVal(event)" name="" id="">
+              <option value="Week">/ Week</option>
+              <option value="Month">/ Month</option>
+            </select></span
+          >
+        </td>
+      </tr>
+      <tr>
+        <td>Straws</td>
+        <td>
+          <input
+            onchange="inputVal(this.value)"
+            data-Input="0.026"
+            class="inputField"
+            value="0"
+            type="number"
+          /><span
+            ><select class="classic" onchange="selectVal(event)" name="" id="">
+              <option value="Week">/ Week</option>
+              <option value="Month">/ Month</option>
+            </select></span
+          >
+        </td>
+      </tr>
+      <tr>
+        <td>Disposable cutlery</td>
+        <td>
+          <input
+            onchange="inputVal(this.value)"
+            data-Input="0.026"
+            class="inputField"
+            value="0"
+            type="number"
+          /><span
+            ><select class="classic" onchange="selectVal(event)" name="" id="">
+              <option value="Week">/ Week</option>
+              <option value="Month">/ Month</option>
+            </select></span
+          >
+        </td>
+      </tr>
+      <tr>
+        <td>Plastic plates</td>
+        <td>
+          <input
+            onchange="inputVal(this.value)"
+            data-Input="1.25"
+            class="inputField"
+            value="0"
+            type="number"
+          /><span
+            ><select class="classic" onchange="selectVal(event)" name="" id="">
+              <option value="Week">/ Week</option>
+              <option value="Month">/ Month</option>
+            </select></span
+          >
+        </td>
+      </tr>
+      <tr class="header expand">
+        <th colspan="2">Other <span class="sign"></span></th>
+      </tr>
+      <tr>
+        <td>Toys, furnitures etc.</td>
+        <td>
+          <input
+            onchange="inputVal(this.value)"
+            data-Input="1"
+            class="inputField"
+            value="0"
+            type="number"
+          /><span
+            ><select class="classic" onchange="selectVal(event)" name="" id="">
+              <option value="kg">kilograms(kg)</option>
+              <option value="pounds">pounds(lb)</option>
+            </select>
+            / year</span
+          >
+        </td>
+      </tr>
+
+      <tr class="header expand">
+        <th colspan="2">Plastic Footprint 👣 <span class="sign"></span></th>
+      </tr>
+      <tr>
+        <td>Total</td>
+        <td>
+          <input id="total" class="total" type="number" />
+          <!-- <div class="end"> -->
+          <span
+            ><select
+              class="classic"
+              onchange="inputVal(this.value)"
+              name=""
+              id="totalSelect"
+            >
+              <option value="kg">kilograms(kg)</option>
+              <option value="pounds">pounds(lb)</option>
+            </select> </span
+          ><span class="mark"> / year </span>
+          <!-- </div> -->
+        </td>
+      </tr>
+      <tr>
+        <td>Which is</td>
+        <td>
+          <input id="lifetime" type="number" />
+          <!-- <div class="end"> -->
+          <span
+            ><select
+              class="classic"
+              onchange="inputVal(this.value)"
+              name=""
+              id="lifetimeSelect"
+            >
+              <option value="kg">kilograms(kg)</option>
+              <option value="pounds">pounds(lb)</option>
+            </select> </span
+          ><span class="mark">/ your lifrtime!</span>
+          <!-- </div> -->
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" class="last">
+          <b>Enter Value to see result !!!!</b>
+        </td>
+      </tr>
+    </table>
+    <div class="calBtn">
+      <a href="/index.html">
+        <button class="button button1">Next</button>
+      </a>
+    </div>
+  </body>
+  <script
+    src="https://code.jquery.com/jquery-3.6.1.js"
+    integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+    crossorigin="anonymous"
+  ></script>
+  <script>
+    if (localStorage.getItem("avatarName") == null) {
+      location.replace("Index_Calculator.html");
+    } else {
+      console.log("ok");
+    }
+    changeAvatar = () => {
+      localStorage.clear();
+      location.replace("Index_Calculator.html");
+    };
+
+    $(".header").click(function () {
+      $(this).toggleClass("expand").nextUntil("tr.header").slideToggle(100);
+    });
+
+    // Total Value
+    inputVal = (val) => {
+      // let targetVAl = val.currentTarget;
+      // console.log(targetVAl);
+      let totalVal = document.getElementById("total");
+      let lifetimeVal = document.getElementById("lifetime");
+      let inputSum = document.querySelectorAll(".inputField");
+      let chooseVal = document.querySelectorAll(".classic");
+      let totalSelect = document.getElementById("totalSelect");
+      let lifetimeSelect = document.getElementById("lifetimeSelect");
+      let monthVal;
+      let totalSum = 0;
+      // let tot = [];
+      for (a = 0; a < inputSum.length; a++) {
+        if (inputSum[a].value !== "0" || inputSum[a].innerHTML !== "") {
+          let mul = parseFloat(inputSum[a].dataset.input) * inputSum[a].value;
+          // tot.push(mul);
+          totalSum += mul;
+          // when converting from month to week
+        }
+      }
+      console.log(totalSum);
+
+      // console.log(tot);
+      // let sum;
+      // for (b = 0; b <= tot.length; b++) {
+      //   sum = tot.reduce((partialSum, a) => partialSum + a, 0);
+      // }
+      totalVal.value = totalSum.toFixed(2);
+      lifetimeVal.value = (totalSum * 75).toFixed(2);
+
+      if (totalSelect.value == "pounds") {
+        totalVal.value = (totalVal.value * 2.20462).toFixed(2);
+      }
+      if (lifetimeSelect.value == "pounds") {
+        lifetimeVal.value = (lifetimeVal.value * 2.20462).toFixed(2);
+      }
+
+      let msg = document.querySelectorAll(".last");
+      if (lifetimeVal.value < 375) {
+        msg[0].innerHTML = "<b>Wow, great result! 😁</b>";
+        // console.log(msg);
+      } else if (lifetimeVal.value > 375 && lifetimeVal.value < 1125) {
+        msg[0].innerHTML = "<b>Awesome, congrats! 😀</b>";
+        // console.log(msg);
+      } else if (lifetimeVal.value > 1125 && lifetimeVal.value < 1500) {
+        msg[0].innerHTML = "<b>Not bad! 😊</b>";
+        // console.log(msg);
+      } else if (lifetimeVal.value > 1500 && lifetimeVal.value < 2250) {
+        msg[0].innerHTML = "<b>Could be better... 😐</b>";
+        // console.log(msg);
+      } else if (lifetimeVal.value > 2250 && lifetimeVal.value < 3750) {
+        msg[0].innerHTML = "<b>That's a heck of a lot of plastic! ☹️</b>";
+        // console.log(msg);
+      } else if (lifetimeVal.value > 3750 && lifetimeVal.value < 6375) {
+        msg[0].innerHTML = "<b>OMG! 😢</b>";
+        // console.log(msg);
+      } else if (lifetimeVal.value > 6375) {
+        msg[0].innerHTML =
+          "<b>That's insane! 😭 We should start moving to Mars if everybody's like you!</b>";
+        // console.log(msg);
+      }
+    };
+    selectVal = (e) => {
+      let selectedValue = e.target.value;
+      // console.log(e.target.closest("td").querySelector("input").value);
+      if (selectedValue == "Week") {
+        let tdVal = e.target.closest("td").querySelector("input").value;
+        tdVal = tdVal / 4.34524;
+        e.target.closest("td").querySelector("input").value = tdVal;
+        console.log(tdVal);
+        // inputSum[a].value = inputSum[a].value / 4.34524;
+        // tot.push(tdVal);
+        // let monthVal = parseFloat(inputSum[a].dataset.input) / inputSum[a].value;
+        // tot.push(monthVal);
+        // tot.push(tdVal);
+      } else if (selectedValue == "kg") {
+        let tdVal = e.target.closest("td").querySelector("input").value;
+        tdVal = tdVal / 2.20462;
+        e.target.closest("td").querySelector("input").value = tdVal;
+        // inputSum[a].value = inputSum[a].value / 2.20462;
+        // tot.push(tdVal);
+      }
+      // end
+      else if (selectedValue == "Month") {
+        let tdVal = e.target.closest("td").querySelector("input").value;
+        tdVal = tdVal * 4.34524;
+        e.target.closest("td").querySelector("input").value = tdVal;
+        console.log(tdVal);
+        // inputSum[a].value = inputSum[a].value * 4.34524;
+        // let monthVal = parseFloat(inputSum[a].dataset.input) / inputSum[a].value;
+        // tot.push(monthVal);
+      } else if (selectedValue == "pounds") {
+        let tdVal = e.target.closest("td").querySelector("input").value;
+        tdVal = tdVal * 2.20462;
+        e.target.closest("td").querySelector("input").value = tdVal;
+        // inputSum[a].value = inputSum[a].value * 2.20462;
+        // monthVal = mul * 2.20462;
+        // tot.push(monthVal);
+        // console.log(monthVal);
+      }
+    };
+
+    //     Weight (1 bottle per week)
+    //  1. PET bottles (1.88)
+    // 2. Plastic bags(0.413)
+    // 3. Food Wrapper(0.786)
+    // 4. Yogurt container(0.786)
+    // 5. Cotton swabs(0.052)
+    // 6. Detergent, cleaning products bottles(6.266)
+    // 7. Shampoo / shower gel / cosmetics bottles(4.17)
+    // 8. Refill packets(0.89)
+    // 9. Toothbrushes(1.04)
+    // 10. Toothpastes(0.786)
+    // 11. Take-away plastic box(1.66)
+    // 12. Take-away plastic cup(1.04)
+    // 13. straws(0.026)
+    // 14.Disposable cutlery(0.209)
+    // 15. Plastic plates(1.25)
+    // 16. Toys, furnitures etc.(1)/year
+  </script>
+</html>
