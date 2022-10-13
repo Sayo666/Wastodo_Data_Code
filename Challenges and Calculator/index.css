@@ -1,0 +1,291 @@
+* {
+  box-sizing: border-box;
+}
+
+.grid,
+.subGrid {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 20px;
+  align-items: stretch;
+}
+body {
+  font-family: "Chewy", "cursive";
+  color: #27323b;
+}
+
+.header {
+  display: flex;
+  align-items: stretch;
+  background-color: #00fff342;
+  box-shadow: 10px 10px 5px #ff6a0c;
+  border-radius: 50px;
+}
+.header h1 {
+  text-align: center;
+  flex-grow: 8;
+  font-size: 65px;
+  margin: 7px;
+  color: #ff6a0c;
+}
+.header .backIcon {
+  margin: auto;
+  margin-left: 15px;
+}
+.header .backIcon img {
+  width: 20px;
+  height: 30px;
+}
+
+/* Float four columns side by side */
+.column,
+.subColumn {
+  padding: 20px 30px 0px;
+  height: 450px;
+}
+.card:hover {
+  box-shadow: #ff6a0c 9px -6px 2px -27px inset,
+    #ff6a0c -20px -30px 49px -2px inset, #ff6a0c 14px -34px 50px -12px inset;
+}
+.card:hover::before,
+.card:hover::after {
+  display: block;
+  content: "";
+  position: absolute;
+  background: #1d1c63;
+  border-radius: 75px;
+  z-index: -1;
+  animation: 1s clockwise infinite;
+}
+
+.tickMark {
+  width: 60px;
+  height: 60px;
+  top: -76px;
+  right: 28px;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+
+/* Remove extra left and right margins, due to padding */
+
+/* Clear floats after the columns */
+.grid:after,
+.subGrid:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.cardImg {
+  width: 250px;
+  height: 250px;
+}
+
+/* Style the counter cards */
+.card {
+  text-align: center;
+  background-color: #00fff342;
+  border-radius: 50%;
+  transition: 1s box-shadow;
+  height: 400px;
+  color: #ff6a0c;
+}
+.card h3 {
+  font-size: 50px;
+  margin: 10px;
+}
+
+.flip-card {
+  background-color: transparent;
+  height: 400px;
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  transform: none;
+  box-shadow: 0 4px 8px 0 #ff6a0c;
+  border-radius: 9%;
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 9%;
+}
+
+.flip-card-front {
+  color: black;
+  background-color: #ffc09e1c;
+  text-align: center !important;
+}
+.flip-card-front img {
+  width: 160px;
+  height: 160px;
+  margin-top: 10px;
+}
+.flip-card-back {
+  width: 100%;
+  background-color: #00fff342;
+  transform: rotateY(180deg);
+}
+
+.txt {
+  text-align: center;
+  font-size: 11px;
+  word-wrap: break-word;
+  padding: 5px;
+  margin: 0;
+}
+.subTickMark {
+  float: right;
+  width: 80px;
+  height: 80px;
+  opacity: 0.6;
+  top: 321px;
+  position: relative;
+}
+
+
+/* CSS */
+.subCatBtn,
+.restartBtn {
+  font-family: "Chewy", "cursive" !important;
+  float: right;
+  margin: 15px;
+  align-self: center;
+  background-color: #ff4e00;
+  background-image: none;
+  background-position: 0 90%;
+  background-repeat: repeat no-repeat;
+  background-size: 4px 3px;
+  
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Neucha, sans-serif;
+  font-size: 1.5rem !important;
+  font-weight: bold;
+  line-height: 23px;
+  letter-spacing: .2rem;
+  outline: none;
+  padding: 0.75rem;
+  text-decoration: none;
+  transition: all 235ms ease-in-out;
+  border-bottom-left-radius: 15px 255px;
+  border-bottom-right-radius: 225px 15px;
+  border-top-left-radius: 255px 15px;
+  border-top-right-radius: 15px 225px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.subCatBtn:hover,
+.restartBtn:hover {
+  box-shadow: rgba(0, 0, 0, 0.3) 2px 8px 8px -5px;
+  transform: translate3d(0, 2px, 0);
+}
+.subCatBtn:focus,
+.restartBtn:focus {
+  box-shadow: rgba(0, 0, 0, 0.3) 2px 8px 4px -6px;
+}
+
+.restartBtn {
+  display: none;
+}
+
+/* front card right paragraph */
+.frontPara {
+  font-size: 18px;
+  word-wrap: break-word;
+  padding: 0 15px;
+}
+
+.subCardHeading{
+  margin: 0;
+}
+
+
+/* Responsive columns */
+@media screen and (max-width: 1100px) {
+  .column,
+  .subColumn {
+    height: auto;
+  }
+  .txt{
+    margin: 5px;
+    padding: 5px;
+    font-size: 10px;
+  }
+  .header h1{
+    font-size:45px !important;
+  }
+  .grid,.subGrid{
+    grid-template-columns: auto auto;
+  }
+  .flip-card-front img{
+    height: fit-content;
+  }
+  .frontPara{
+    float: left;
+    width: 100%;
+    font-size: 15px;
+    padding: 0 10px;
+  }
+  .subTickMark{
+    width: 50px;
+    height: auto;
+    top: 348px;
+  }
+  .card h3{
+    font-size: 40px;
+  }
+  .cardImg{
+    width: 200px;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .grid,.subGrid{
+    grid-template-columns: auto;
+  }
+  .column,
+  .subColumn {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+    float: none;
+    height: 100%;
+  }
+  .txt{
+    font-size: 9px;
+    padding: 5px;
+    margin: 5px;
+  }
+  .header h1{
+    font-size:30px !important;
+  }
+  .card {
+    height: 100%;
+  }
+  .tickMark {
+    width: 50px;
+    height: 50px;
+    top: -55px;
+  }
+  .cardImg {
+    width: 200px !important;
+    height: 200px !important;
+  }
+}

@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Plastic_Index_Calculator</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Chewy&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Chewy", "cursive";
+        color: #27323b;
+      }
+
+      /* Remove extra left and right margins, due to padding */
+      .grid {
+        margin: 0 -5px;
+        display: grid;
+        grid-template-columns: auto auto auto;
+        grid-gap: 20px;
+        align-items: stretch;
+      }
+
+      /* Clear floats after the columns */
+      .grid:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+
+      /* Responsive columns */
+
+      @media screen and (max-width: 1100px) {
+        .grid {
+          grid-template-columns: auto auto;
+        }
+        .avatarImg {
+          width: 200px !important;
+        }
+      }
+
+      @media screen and (max-width: 620px) {
+        .column {
+          width: 100%;
+          display: block;
+          margin-bottom: 20px;
+          float: none;
+          height: 100%;
+        }
+        .grid {
+          grid-template-columns: auto;
+        }
+        /* .avatarImg {
+          width: 200px !important;
+          height: 200px !important;
+        } */
+      }
+      /* Style the counter cards */
+      .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        padding: 16px;
+        text-align: center;
+        background-color: #f1f1f1;
+      }
+      .card:target {
+        background-color: #ff4e00;
+      }
+
+      .header,
+      .nameHeader {
+        display: flex;
+        align-items: stretch;
+        background-color: #00fff342;
+        box-shadow: 10px 10px 5px #ff6a0c;
+        border-radius: 50px;
+        margin-bottom: 30px;
+      }
+      .header h1,
+      .nameHeader h1 {
+        text-align: center;
+        flex-grow: 8;
+        font-size: 65px;
+        margin: 7px;
+        color: #ff6a0c;
+      }
+
+      .button {
+        font-family: "Chewy", "cursive" !important;
+        float: right;
+        margin: 15px;
+        align-self: center;
+        background-color: #ff4e00;
+        background-image: none;
+        background-position: 0 90%;
+        background-repeat: repeat no-repeat;
+        background-size: 4px 3px;
+        box-sizing: border-box;
+        cursor: pointer;
+        display: inline-block;
+        font-family: Neucha, sans-serif;
+        font-size: 1.5rem !important;
+        font-weight: bold;
+        line-height: 23px;
+        letter-spacing: 0.2rem;
+        outline: none;
+        padding: 0.75rem;
+        text-decoration: none;
+        transition: all 235ms ease-in-out;
+        border-bottom-left-radius: 15px 255px;
+        border-bottom-right-radius: 225px 15px;
+        border-top-left-radius: 255px 15px;
+        border-top-right-radius: 15px 225px;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+      }
+
+      .button1:hover {
+        box-shadow: rgb(0 0 0 / 30%) 2px 8px 8px -5px;
+        transform: translate3d(0, 2px, 0);
+      }
+
+      .lists ul {
+        display: grid;
+        grid-template-columns: auto auto auto;
+        margin: 69px;
+        padding: 1px;
+        list-style-type: none;
+        text-align: center;
+      }
+
+      .lists li {
+        display: inline;
+        padding: 20px;
+      }
+
+      .lists li a {
+        text-decoration: none;
+        padding: 0.2em 1.1em;
+        /* border-right: 1px solid rgba(247, 95, 6, 0.8); */
+        color: black;
+        margin: 0 0 0 -6px;
+        font-size: 30px;
+      }
+
+      .lists li a:hover {
+        background: rgba(102, 250, 238, 0.8);
+        color: #ff5100;
+      }
+      .nameHeader .backIcon {
+        margin: auto;
+        margin-left: 15px;
+      }
+      .nameHeader .backIcon img {
+        width: 20px;
+        height: 30px;
+      }
+      .card {
+        text-align: center;
+        background-color: #00fff342;
+        border-radius: 50%;
+        transition: 1s box-shadow;
+        height: 400px;
+        color: #ff6a0c;
+      }
+      .card:hover {
+        box-shadow: #ff6a0c 9px -6px 2px -27px inset,
+          #ff6a0c -20px -30px 49px -2px inset,
+          #ff6a0c 14px -34px 50px -12px inset;
+      }
+      .card:hover::before,
+      .card:hover::after {
+        display: block;
+        content: "";
+        position: absolute;
+        background: #1d1c63;
+        border-radius: 75px;
+        z-index: -1;
+        animation: 1s clockwise infinite;
+      }
+      .avatarImg {
+        width: 300px;
+        height: 350px;
+      }
+      .aNames {
+        color: black;
+        background-color: #ffe1aa;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Avatar -->
+    <div class="avatar">
+      <div class="header">
+        <h1>Select the Avatar</h1>
+      </div>
+      <div class="grid">
+        <div class="column">
+          <a class="avatarItem" href="#">
+            <div class="card" onclick="avatarClick(event)">
+              <!-- <h3>Boy</h3> -->
+              <img class="avatarImg" src="./icons/avatarMen1.png" alt="" />
+            </div>
+          </a>
+        </div>
+
+        <div class="column">
+          <a class="avatarItem" href="#">
+            <div class="card" onclick="avatarClick(event)">
+              <!-- <h3>Girl</h3> -->
+              <img class="avatarImg" src="./icons/avatarFemale1.png" alt="" />
+            </div>
+          </a>
+        </div>
+
+        <div class="column">
+          <a class="avatarItem" href="#">
+            <div class="card" onclick="avatarClick(event)">
+              <!-- <h3>Girl</h3> -->
+              <img class="avatarImg" src="./icons/avatarMen2.png" alt="" />
+            </div>
+          </a>
+        </div>
+
+        <div class="column">
+          <a class="avatarItem" href="#">
+            <div class="card" onclick="avatarClick(event)">
+              <!-- <h3>Boy</h3> -->
+              <img class="avatarImg" src="./icons/girl2Avatar.png" alt="" />
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="avatarBtn">
+        <button onclick="hideAvatar()" class="button button1">Next</button>
+      </div>
+    </div>
+
+    <!-- Names -->
+    <div class="names">
+      <div class="nameHeader">
+        <div class="backIcon">
+          <a href="#" onclick="showAvatar(event)">
+            <img src="/icons/Back_Arrow.svg" alt="" />
+          </a>
+        </div>
+        <h1>Select the Name</h1>
+      </div>
+      <div class="lists">
+        <ul>
+          <li class="nameLists">
+            <a class="aNames" onclick="handleNames(event)" href="#">Name 2</a>
+          </li>
+          <li class="nameLists">
+            <a class="aNames" onclick="handleNames(event)" href="#">Name 3</a>
+          </li>
+          <li class="nameLists">
+            <a class="aNames" onclick="handleNames(event)" href="#">Name 4</a>
+          </li>
+          <li class="nameLists">
+            <a class="aNames" onclick="handleNames(event)" href="#">Name 1</a>
+          </li>
+          <li class="nameLists">
+            <a class="aNames" onclick="handleNames(event)" href="#">Name 5</a>
+          </li>
+          <li class="nameLists">
+            <a class="aNames" onclick="handleNames(event)" href="#">Name 6</a>
+          </li>
+          <li class="nameLists">
+            <a class="aNames" onclick="handleNames(event)" href="#">Name 7</a>
+          </li>
+          <li class="nameLists">
+            <a class="aNames" onclick="handleNames(event)" href="#">Name 8</a>
+          </li>
+        </ul>
+      </div>
+      <div class="avatarBtn">
+        <a href="/calculator.html">
+          <button class="button button1">Next</button>
+        </a>
+      </div>
+    </div>
+  </body>
+  <script>
+    if (
+      localStorage.getItem("avatarName") &&
+      localStorage.getItem("imgData") !== null
+    ) {
+      location.replace("calculator.html");
+    }
+    else{
+      console.log("ok")
+    }
+    let name = document.querySelector(".names");
+    let avatar = document.querySelector(".avatar");
+    name.style.display = "none";
+    hideAvatar = () => {
+      console.log("hide");
+      avatar.style.display = "none";
+      name.style.display = "block";
+    };
+    showAvatar = (event) => {
+      event.preventDefault();
+      avatar.style.display = "grid";
+      name.style.display = "none";
+    };
+
+    avatarClick = (event) => {
+      // debugger;
+      // alert(event.target.nodeName);
+      event.preventDefault();
+      let currentTarget = event.currentTarget.closest(".card");
+      currentTarget.style.backgroundColor = "#ff5e00";
+      console.log(currentTarget);
+
+      const cards = document.querySelectorAll(".card");
+      const filtered = [...cards].filter((n) => n !== currentTarget);
+      console.log(filtered);
+      filtered.map((m) => (m.style.backgroundColor = "#00fff342"));
+
+      let avatarImg = currentTarget.children[0];
+      imgData = getBase64Image(avatarImg);
+      localStorage.setItem("imgData", imgData);
+      // console.log(currentTarget.children[0]);
+
+      function getBase64Image(img) {
+        var canvas = document.createElement("canvas");
+        canvas.width = img.naturalWidth;
+        canvas.height = img.naturalHeight;
+
+        var ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0);
+
+        var dataURL = canvas.toDataURL("image/png");
+
+        return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+      }
+      // alert(event.currentTarget.nodeName)
+    };
+    handleNames = (e) => {
+      e.preventDefault();
+      let aTag = e.currentTarget;
+      let currentName = aTag.innerHTML;
+      localStorage.setItem("avatarName", currentName);
+      aTag.style.backgroundColor = "#00fff342";
+      aTag.style.color = "#ff6a0c";
+
+      let allElement = document.querySelectorAll(".aNames");
+      let filtered = [...allElement].filter((a) => a !== aTag);
+      filtered.map((f) => {
+        f.style.backgroundColor = "#ffe1aa";
+        f.style.color = "black";
+      });
+      console.log(currentName);
+      console.log(aTag);
+    };
+  </script>
+</html>
